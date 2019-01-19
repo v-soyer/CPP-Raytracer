@@ -13,6 +13,12 @@
 
 using vec3f_t = linalg::vec<double, 3>;
 
+enum	ShapeType {
+	PLANE		= 1,
+	SPHERE		= 2,
+	CYLINDER	= 3,
+	CONE		= 4
+};
 
 namespace Color {
 	struct color {

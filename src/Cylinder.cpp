@@ -6,6 +6,7 @@
 */
 
 #include "Cylinder.hpp"
+#include "DataStruct.hpp"
 
 Cylinder::Cylinder(int const id):
 AShape(id)
@@ -13,7 +14,7 @@ AShape(id)
 }
 
 Cylinder::Cylinder(int const id, vec3f_t pos, vec3f_t rot, Color::color col):
-AShape(id, pos, rot, col)
+AShape(id, CYLINDER, pos, rot, col)
 {
 }
 

@@ -15,11 +15,13 @@
 class AShape: public IIntersectable {
 	public:
 		AShape(int const id);
-		AShape(int const id, vec3f_t pos, vec3f_t rot, Color::color col);
+		AShape(int const id, ShapeType type, vec3f_t pos, vec3f_t rot, Color::color col);
 
 		virtual ~AShape() = default;
 
 		int				getId() const;
+		ShapeType		getType() const;
+		std::string		getTypeName() const;
 		Color::color	getColor() const;
 		vec3f_t 		getPosition() const;
 		vec3f_t			getRotation() const;
@@ -29,6 +31,7 @@ class AShape: public IIntersectable {
 
 	protected:
 		int				id;
+		ShapeType		type;
 		vec3f_t			position;
 		vec3f_t			rotation;
 		Color::color	color;

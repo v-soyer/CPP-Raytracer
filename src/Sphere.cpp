@@ -6,6 +6,7 @@
 */
 
 #include "Sphere.hpp"
+#include "DataStruct.hpp"
 
 Sphere::Sphere(int const id):
 AShape(id)
@@ -13,7 +14,7 @@ AShape(id)
 }
 
 Sphere::Sphere(int const id, vec3f_t pos, vec3f_t rot, Color::color col):
-AShape(id, pos, rot, col)
+AShape(id, SPHERE, pos, rot, col)
 {
 }
 

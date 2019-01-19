@@ -45,7 +45,7 @@ void	Scene::displayObjectsInfo()
 		vec3f_t rot = this->objects[i]->getRotation();
 		Color::color col = this->objects[i]->getColor();
 
-		std::cout << "This is object n°" << this->objects[i]->getId() << std::endl;
+		std::cout << "This is object n°" << this->objects[i]->getId() << ".This is a " << this->objects[i]->getTypeName() << std::endl;
 		std::cout << "Its postion is: X:" << pos.x << "  Y:" << pos.y << "  Z:" << pos.z << std::endl;
 		std::cout << "Its rotation is: X:" << rot.x << "  Y:" << rot.y << "  Z:" << rot.z << std::endl;
 		std::cout << "Its color is:  R:" << static_cast<int>(col.r) << "  G:" << static_cast<int>(col.g) << "  B:" << static_cast<int>(col.b) << std::endl;

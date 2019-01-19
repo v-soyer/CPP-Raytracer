@@ -6,6 +6,7 @@
 */
 
 #include "Cone.hpp"
+#include "DataStruct.hpp"
 
 Cone::Cone(int const id):
 AShape(id)
@@ -13,7 +14,7 @@ AShape(id)
 }
 
 Cone::Cone(int const id, vec3f_t pos, vec3f_t rot, Color::color col):
-AShape(id, pos, rot, col)
+AShape(id, CONE, pos, rot, col)
 {
 }
 
