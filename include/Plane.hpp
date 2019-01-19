@@ -13,6 +13,7 @@
 class Plane: public AShape {
 	public:
 		Plane(const int id);
+		Plane(int const id, vec3f_t pos, vec3f_t rot, Color::color col);
 		~Plane() = default;
 
 //		bool	intersect() const override;

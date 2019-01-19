@@ -13,6 +13,7 @@
 class Cone: public AShape {
 	public:
 		Cone(const int id);
+		Cone(int const id, vec3f_t pos, vec3f_t rot, Color::color col);
 		~Cone() = default;
 
 //		bool	intersect() const override;

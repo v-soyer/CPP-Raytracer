@@ -15,6 +15,8 @@
 class AShape: public IIntersectable {
 	public:
 		AShape(int const id);
+		AShape(int const id, vec3f_t pos, vec3f_t rot, Color::color col);
+
 		virtual ~AShape() = default;
 
 		int				getId() const;

@@ -14,6 +14,11 @@ id(id), position(0, 0, 0), rotation(0, 0, 0), color(Color::White)
 {
 }
 
+AShape::AShape(int const id, vec3f_t pos, vec3f_t rot, Color::color col):
+id(id), position(pos.x, pos.y, pos.z), rotation(rot.x, rot.y, rot.z), color({col.r, col.g, col.b})
+{
+}
+
 int	AShape::getId() const
 {
 	return(this->id);

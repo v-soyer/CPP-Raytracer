@@ -13,6 +13,7 @@
 class Cylinder: public AShape {
 	public:
 		Cylinder(const int id);
+		Cylinder(int const id, vec3f_t pos, vec3f_t rot, Color::color col);
 		~Cylinder() = default;
 
 		void	setRadius(const double radius);

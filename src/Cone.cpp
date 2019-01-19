@@ -12,6 +12,11 @@ AShape(id)
 {
 }
 
+Cone::Cone(int const id, vec3f_t pos, vec3f_t rot, Color::color col):
+AShape(id, pos, rot, col)
+{
+}
+
 void	Cone::setSemiangle(const double semiangle)
 {
 	this->semiangle = semiangle;

@@ -13,6 +13,7 @@
 class Sphere: public AShape {
 	public:
 		Sphere(const int id);
+		Sphere(int const id, vec3f_t pos, vec3f_t rot, Color::color col);
 		~Sphere() = default;
 
 //		bool	intersect() const override;
