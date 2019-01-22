@@ -20,6 +20,7 @@ class Scene {
 		Scene();
 		~Scene();
 
+
 		void	addObject(std::unique_ptr<AShape>&& obj);
 		void	addLight(std::unique_ptr<Light>&& light);
 		void	removeObject(int const objId);

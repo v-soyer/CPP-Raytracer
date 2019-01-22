@@ -16,6 +16,8 @@ class Sphere: public AShape {
 		Sphere(int const id, vec3f_t pos, vec3f_t rot, Color::color col);
 		~Sphere() = default;
 
+		void	displayInfo() override;
+
 //		bool	intersect() const override;
 
 		void	setRadius(const double radius);

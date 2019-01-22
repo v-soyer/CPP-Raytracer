@@ -16,6 +16,8 @@ class Cone: public AShape {
 		Cone(int const id, vec3f_t pos, vec3f_t rot, Color::color col);
 		~Cone() = default;
 
+		void	displayInfo() override;
+
 //		bool	intersect() const override;
 
 		void	setSemiangle(const double semiangle);
