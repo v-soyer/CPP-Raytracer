@@ -13,12 +13,20 @@
 
 class Eye: public ITransformable {
 	public:
+
+		void	translate(vec3f_t direction) override;
+		void	rotate_x(float angle) override;
+		void	rotate_y(float angle) override;
+		void	rotate_z(float angle) override;
+		void	rotate_xyz(vec3f_t angle) override;
+		void	rotate_zyx(vec3f_t angle) override;
+
 		void	setPosition(vec3f_t const &pos);
 		void	setRotation(vec3f_t const &rot);
 		void	setDistToScreen(double const dist);
-		vec3f_t	getPosition();
-		vec3f_t	getRotation();
-		double	getDistToScreen();
+		vec3f_t	getPosition() const;
+		vec3f_t	getRotation() const;
+		double	getDistToScreen() const;
 
 	private:
 		vec3f_t	position;
