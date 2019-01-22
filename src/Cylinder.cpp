@@ -8,14 +8,15 @@
 #include <iostream>
 #include "Cylinder.hpp"
 #include "DataStruct.hpp"
+#include "DeltaHandler.hpp"
 
 Cylinder::Cylinder(int const id):
-AShape(id)
+AShape(id),radius(50)
 {
 }
 
-Cylinder::Cylinder(int const id, vec3f_t pos, vec3f_t rot, Color::color col):
-AShape(id, pos, rot, col)
+Cylinder::Cylinder(int const id, vec3f_t pos, vec3f_t rot, double radius, Color::color col):
+AShape(id, pos, rot, col), radius(radius)
 {
 }
 
@@ -29,13 +30,24 @@ double	Cylinder::getRadius()
 	return (this->radius);
 }
 
+double	Cylinder::intersect(vec3f_t eyePos, vec3f_t dir_vector) const
+{
+	vec3f_t			coeff;
+	DeltaHandler	delta;
+
+	coeff.x = pow(dir_vector.x, 2) + pow(dir_vector.y, 2);
+	coeff.y = (2 * eyePos.x * dir_vector.x) + (2 * eyePos.y * dir_vector.y);
+	coeff.z = pow(eyePos.x, 2) + pow(eyePos.y, 2) - pow(this->radius, 2);
+	return (delta.calcDelta(coeff));
+}
+
 void	Cylinder::displayInfo()
 {
 	vec3f_t pos = this->getPosition();
 	vec3f_t rot = this->getRotation();
 	Color::color col = this->getColor();
 
-	std::cout << "This object is a Cylinder" << std::endl;
+	std::cout << "This object is a Cylinder of radius " << this->radius << std::endl;
 	std::cout << "Its postion is: X:" << pos.x << "  Y:" << pos.y << "  Z:" << pos.z << std::endl;
 	std::cout << "Its rotation is: X:" << rot.x << "  Y:" << rot.y << "  Z:" << rot.z << std::endl;
 	std::cout << "Its color is:  R:" << static_cast<int>(col.r) << "  G:" << static_cast<int>(col.g) << "  B:" << static_cast<int>(col.b) << std::endl;

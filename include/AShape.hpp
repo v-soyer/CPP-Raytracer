@@ -28,7 +28,6 @@ class AShape: public IIntersectable {
 		void			setPosition(const vec3f_t &pos);
 		void			setRotation(const vec3f_t &rot);
 
-
 	protected:
 		int				id;
 		vec3f_t			position;

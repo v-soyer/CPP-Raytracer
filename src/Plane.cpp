@@ -19,6 +19,17 @@ AShape(id, pos, rot, col)
 {
 }
 
+double	Plane::intersect(vec3f_t eyePos, vec3f_t dir_vector) const
+{
+    double  k;
+
+    k = (-eyePos.z) / dir_vector.z;
+    if (k <= 0)
+        return (-1.0);
+    else
+        return (k);
+}
+
 void	Plane::displayInfo()
 {
 	vec3f_t pos = this->getPosition();

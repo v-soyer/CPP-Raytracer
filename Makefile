@@ -19,6 +19,7 @@ SRCS	=	./src/Scene.cpp			\
 			./src/Light.cpp			\
 			./src/AShape.cpp		\
 			./src/Eye.cpp			\
+			./src/DeltaHandler.cpp	\
 			./src/main.cpp
 
 

@@ -18,7 +18,7 @@ class Plane: public AShape {
 
 		void	displayInfo() override;
 
-//		bool	intersect() const override;
+		double	intersect(vec3f_t eyePos, vec3f_t dir_vector) const override;
 };
 
 #endif /* !PLANE_HPP_ */
