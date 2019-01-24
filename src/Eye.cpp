@@ -9,6 +9,16 @@
 
 #define RAD(angle) ((angle) * M_PI / 180)
 
+Eye::Eye():
+position(-100,0,0), rotation(0,0,0), distToScreen(50)
+{
+}
+
+Eye::Eye(vec3f_t position, vec3f_t rotation, double dist):
+position(position), rotation(rotation), distToScreen(dist)
+{
+}
+
 void	Eye::setPosition(vec3f_t const &pos)
 {
 	this->position = pos;
@@ -39,7 +49,7 @@ double	Eye::getDistToScreen() const
 	return(this->distToScreen);
 }
 
-void	Eye::translate(vec3f_t direction)
+void	Eye::translate(vec3f_t &direction)
 {
 	this->position.x += direction.x;
 	this->position.y += direction.y;
@@ -64,14 +74,14 @@ void	Eye::rotate_z(float angle)
 	this->rotation.y = (this->rotation.x * sin(RAD(angle))) + (this->rotation.y * cos(RAD(angle)));
 }
 
-void	Eye::rotate_xyz(vec3f_t angle)
+void	Eye::rotate_xyz(vec3f_t &angle)
 {
 	this->rotate_x(angle.x);
 	this->rotate_y(angle.y);
 	this->rotate_z(angle.z);
 }
 
-void	Eye::rotate_zyx(vec3f_t angle)
+void	Eye::rotate_zyx(vec3f_t &angle)
 {
 	this->rotate_z(angle.z);
 	this->rotate_y(angle.y);

@@ -20,6 +20,8 @@ SRCS	=	./src/Scene.cpp			\
 			./src/AShape.cpp		\
 			./src/Eye.cpp			\
 			./src/DeltaHandler.cpp	\
+			./src/Raytracer.cpp		\
+			./src/DirectorVector.cpp\
 			./src/main.cpp
 
 

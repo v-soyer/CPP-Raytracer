@@ -11,6 +11,9 @@
 #include <cstdint>
 #include "linalg.hpp"
 
+#define WIDTH (1920)
+#define HEIGHT (1080)
+
 using vec3f_t = linalg::vec<double, 3>;
 
 namespace Color {

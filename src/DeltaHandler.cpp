@@ -7,7 +7,7 @@
 
 #include "DeltaHandler.hpp"
 
-double DeltaHandler::calcDelta(vec3f_t coeff) const
+double DeltaHandler::calcDelta(vec3f_t &coeff) const
 {
 	double	delta;
 
@@ -22,7 +22,7 @@ double DeltaHandler::calcDelta(vec3f_t coeff) const
 		return (-1.0);
 }
 
-double DeltaHandler::equalZero(vec3f_t coeff) const
+double DeltaHandler::equalZero(vec3f_t &coeff) const
 {
 	double x = 0;
 
@@ -33,7 +33,7 @@ double DeltaHandler::equalZero(vec3f_t coeff) const
 		return (-1.0);
 }
 
-double DeltaHandler::superiorZero(double delta, vec3f_t coeff) const
+double DeltaHandler::superiorZero(double delta, vec3f_t &coeff) const
 {
 	double	x1;
 	double	x2;

@@ -13,7 +13,7 @@
 class IIntersectable {
 	public:
 		virtual ~IIntersectable() = default;
-		virtual double intersect(vec3f_t eyePos, vec3f_t dir_vector) const = 0;
+		virtual double intersect(vec3f_t const &eyePos, vec3f_t const &dirVector) const = 0;
 };
 
 #endif /* !INTERSECTABLE_HPP_ */

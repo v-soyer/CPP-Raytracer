@@ -14,16 +14,16 @@ AShape(id)
 {
 }
 
-Plane::Plane(int const id, vec3f_t pos, vec3f_t rot, Color::color col):
+Plane::Plane(int const id, vec3f_t const &pos, vec3f_t const &rot, Color::color const &col):
 AShape(id, pos, rot, col)
 {
 }
 
-double	Plane::intersect(vec3f_t eyePos, vec3f_t dir_vector) const
+double	Plane::intersect(vec3f_t const &eyePos, vec3f_t const &dirVector) const
 {
     double  k;
 
-    k = (-eyePos.z) / dir_vector.z;
+    k = (-eyePos.z) / dirVector.z;
     if (k <= 0)
         return (-1.0);
     else

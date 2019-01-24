@@ -15,7 +15,7 @@ AShape(id), radius(50)
 {
 }
 
-Sphere::Sphere(int const id, vec3f_t pos, vec3f_t rot, double radius, Color::color col):
+Sphere::Sphere(int const id, vec3f_t const &pos, vec3f_t const &rot, double radius, Color::color const &col):
 AShape(id, pos, rot, col), radius(radius)
 {
 }
@@ -30,13 +30,13 @@ double	Sphere::getRadius()
 	return (this->radius);
 }
 
-double	Sphere::intersect(vec3f_t eyePos, vec3f_t dir_vector) const
+double	Sphere::intersect(vec3f_t const &eyePos, vec3f_t const &dirVector) const
 {
 	vec3f_t			coeff;
 	DeltaHandler	delta;
 
-	coeff.x = pow(dir_vector.x, 2) + pow(dir_vector.y, 2) + pow(dir_vector.z, 2);
-	coeff.y = (2 * eyePos.x * dir_vector.x) + (2 * eyePos.y * dir_vector.y) + (2 * eyePos.z * dir_vector.z);
+	coeff.x = pow(dirVector.x, 2) + pow(dirVector.y, 2) + pow(dirVector.z, 2);
+	coeff.y = (2 * eyePos.x * dirVector.x) + (2 * eyePos.y * dirVector.y) + (2 * eyePos.z * dirVector.z);
 	coeff.z = (pow(eyePos.x, 2) + pow(eyePos.y, 2) + pow(eyePos.z, 2) - pow(radius, 2));
 	return (delta.calcDelta(coeff));
 }

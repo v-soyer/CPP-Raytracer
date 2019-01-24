@@ -15,9 +15,9 @@ class DeltaHandler {
 		DeltaHandler() = default;
 		~DeltaHandler() = default;
 
-		double calcDelta(vec3f_t coeff) const;
-		double equalZero(vec3f_t coeff) const;
-		double superiorZero(double delta, vec3f_t coeff) const;
+		double calcDelta(vec3f_t &coeff) const;
+		double equalZero(vec3f_t &coeff) const;
+		double superiorZero(double delta, vec3f_t &coeff) const;
 };
 
 #endif /* !DELTAHANDLER_HPP_ */

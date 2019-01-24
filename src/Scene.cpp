@@ -16,6 +16,16 @@ Scene::~Scene()
 {
 }
 
+std::vector<std::unique_ptr<AShape>>&	Scene::getObjects()
+{
+	return (this->objects);
+}
+
+std::vector<std::unique_ptr<Light>>&	Scene::getLights()
+{
+	return (this->lights);
+}
+
 void	Scene::addObject(std::unique_ptr<AShape>&& obj)
 {
 	this->objects.push_back(std::move(obj));

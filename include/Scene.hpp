@@ -21,6 +21,9 @@ class Scene {
 		~Scene();
 
 
+		std::vector<std::unique_ptr<AShape>>&	getObjects();
+		std::vector<std::unique_ptr<Light>>&		getLights();
+
 		void	addObject(std::unique_ptr<AShape>&& obj);
 		void	addLight(std::unique_ptr<Light>&& light);
 		void	removeObject(int const objId);

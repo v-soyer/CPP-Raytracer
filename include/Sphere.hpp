@@ -13,12 +13,12 @@
 class Sphere: public AShape {
 	public:
 		Sphere(const int id);
-		Sphere(int const id, vec3f_t pos, vec3f_t rot, double radius, Color::color col);
+		Sphere(int const id, vec3f_t const &pos, vec3f_t const  &rot, double radius, Color::color const &col);
 		~Sphere() = default;
 
 		void	displayInfo() override;
 
-		double	intersect(vec3f_t eyePos, vec3f_t dir_vector) const override;
+		double	intersect(vec3f_t const &eyePos, vec3f_t const &dirVector) const override;
 
 		void	setRadius(const double radius);
 		double	getRadius();

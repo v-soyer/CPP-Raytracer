@@ -13,12 +13,12 @@
 class Plane: public AShape {
 	public:
 		Plane(const int id);
-		Plane(int const id, vec3f_t pos, vec3f_t rot, Color::color col);
+		Plane(int const id, vec3f_t const &pos, vec3f_t const &rot, Color::color const &col);
 		~Plane() = default;
 
 		void	displayInfo() override;
 
-		double	intersect(vec3f_t eyePos, vec3f_t dir_vector) const override;
+		double	intersect(vec3f_t const &eyePos, vec3f_t const &dirVector) const override;
 };
 
 #endif /* !PLANE_HPP_ */
