@@ -12,6 +12,11 @@ id(id)
 {
 }
 
+Light::Light(int const id, vec3f_t pos):
+id(id), position(pos)
+{
+}
+
 int		Light::getId() const
 {
 	return(this->id);

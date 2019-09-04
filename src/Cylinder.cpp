@@ -41,6 +41,16 @@ double	Cylinder::intersect(vec3f_t const &eyePos, vec3f_t const &dirVector) cons
 	return (delta.calcDelta(coeff));
 }
 
+vec3f_t	Cylinder::getNormal(vec3f_t const &intersectPoint, vec3f_t) const
+{
+	vec3f_t	tmp;
+
+	tmp.x = intersectPoint.x;
+	tmp.y = intersectPoint.y;
+	tmp.z = 0;
+	return (tmp);
+}
+
 void	Cylinder::displayInfo()
 {
 	vec3f_t pos = this->getPosition();

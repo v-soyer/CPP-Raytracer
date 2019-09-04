@@ -25,6 +25,10 @@ int main()
 	int 						i = 0;
 	myScene.addObject(std::move(std::make_unique<Sphere>(1, vec3f_t(0,0,0), vec3f_t(0,0,0), 50, Color::Red)));
 	myScene.addObject(std::move(std::make_unique<Plane>(2, vec3f_t(0,0,-30), vec3f_t(0,0,0), Color::Blue)));
+	myScene.addObject(std::move(std::make_unique<Cylinder>(3, vec3f_t(0,80,0), vec3f_t(20,20,20), 25, Color::Yellow)));
+	myScene.addObject(std::move(std::make_unique<Cone>(4, vec3f_t(-95,-105,0), vec3f_t(0,0,0), 30, Color::Green)));
+	myScene.addObject(std::move(std::make_unique<Plane>(5, vec3f_t(0,0,45), vec3f_t(0,0,0), Color::Blue)));
+	myScene.addLight(std::move(std::make_unique<Light>(1, vec3f_t(-100, 0, 0))));
 
 	Raytracer	rt(myScene, myEye);
 	pixels = rt.raytraceScene();
@@ -33,7 +37,7 @@ int main()
 			img.set_pixel(x, y, pixels[i].r, pixels[i].g, pixels[i].b);
 			i += 1;
 		}
-	img.save_image("CHIBRE.bmp");
+	img.save_image("rt.bmp");
 	return (0);
 }
 

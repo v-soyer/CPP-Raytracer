@@ -11,9 +11,10 @@
 #include "ITransformable.hpp"
 #include "DataStruct.hpp"
 
-class Light: public ITransformable {
+class Light {
 	public:
 		Light(int const id);
+		Light(int const id, vec3f_t pos);
 
 		int		getId() const;
 		vec3f_t	getPosition() const;

@@ -9,6 +9,8 @@
 	#define SHAPE_HPP_
 
 #include "IIntersectable.hpp"
+#include "Eye.hpp"
+#include "DirectorVector.hpp"
 #include "DataStruct.hpp"
 
 
@@ -27,6 +29,9 @@ class AShape: public IIntersectable {
 		void			setColor(const Color::color &color);
 		void			setPosition(const vec3f_t &pos);
 		void			setRotation(const vec3f_t &rot);
+
+		double			getLightCoeff(vec3f_t const &lightVec, vec3f_t const &interPoint);
+		Color::color	applyLight(Eye &myEye, vec3f_t const &lightVector, vec3f_t const &interPoint, Color::color newColor) override;
 
 	protected:
 		int				id;

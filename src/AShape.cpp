@@ -5,6 +5,7 @@
 ** AShape impl
 */
 
+#include <iostream>
 #include <array>
 #include "AShape.hpp"
 #include "DataStruct.hpp"
@@ -54,5 +55,52 @@ void	AShape::setRotation(const vec3f_t &rot)
 	this->rotation = rot;
 }
 
+double	AShape::getLightCoeff(vec3f_t const &lightVec, vec3f_t const &normal)
+{
+	vec3f_t tmp;
+	double	coeff;
+
+	tmp.x = normal.x * lightVec.x;
+	tmp.y = normal.y * lightVec.y;
+	tmp.z = normal.z * lightVec.z;
+	coeff = tmp.x + tmp.y + tmp.z;
+	if (coeff < 0)
+		return (0.0);
+	else if (coeff > 1)
+		return (1);
+	else
+		return (coeff);
+}
+
+Color::color	AShape::applyLight(Eye &myEye,vec3f_t const &lightVector, vec3f_t const &interPoint, Color::color newColor)
+{
+	vec3f_t			objPos = this->getPosition();
+	vec3f_t			objRot = this->getRotation();
+	vec3f_t			objPosRev = -objPos;
+	vec3f_t			objRotRev = -objRot;
+	vec3f_t	tmp;
+	DirectorVector	myLight(lightVector);
+	DirectorVector	normal(this->getNormal(interPoint, myEye.getPosition()));
+	double			coeff;
+
+	myEye.translate(objPosRev);
+	myEye.rotate_xyz(objRotRev);
+	myLight.translate(objPosRev);
+	myLight.rotate_xyz(objRotRev);
+	tmp.x = myLight.getDirVector().x - interPoint.x;
+	tmp.y = myLight.getDirVector().y - interPoint.y;
+	tmp.z = myLight.getDirVector().z - interPoint.z;
+	DirectorVector	lightVec(tmp);
+	coeff = this->getLightCoeff(lightVec.getNormalised(), normal.getNormalised());
+//	std::cout << coeff << std::endl;
+	newColor.r = newColor.r * coeff;
+	newColor.g = newColor.g * coeff;
+	newColor.b = newColor.b * coeff;
+	myLight.rotate_zyx(objRot);
+	myLight.translate(objPos);
+	myEye.rotate_zyx(objRot);
+	myEye.translate(objPos);
+	return (newColor);
+}
 
 

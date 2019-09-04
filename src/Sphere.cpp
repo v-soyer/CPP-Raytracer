@@ -41,6 +41,11 @@ double	Sphere::intersect(vec3f_t const &eyePos, vec3f_t const &dirVector) const
 	return (delta.calcDelta(coeff));
 }
 
+vec3f_t	Sphere::getNormal(vec3f_t const &intersectPoint, vec3f_t) const
+{
+	return (intersectPoint);
+}
+
 void	Sphere::displayInfo()
 {
 	vec3f_t pos = this->getPosition();

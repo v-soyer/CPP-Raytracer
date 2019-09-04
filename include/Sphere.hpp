@@ -19,6 +19,7 @@ class Sphere: public AShape {
 		void	displayInfo() override;
 
 		double	intersect(vec3f_t const &eyePos, vec3f_t const &dirVector) const override;
+		vec3f_t getNormal(vec3f_t const &intersectPoint, vec3f_t) const override;
 
 		void	setRadius(const double radius);
 		double	getRadius();

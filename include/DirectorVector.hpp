@@ -24,6 +24,9 @@ class DirectorVector {
 		void	rotate_z(float angle);
 		void	rotate_xyz(vec3f_t &angle);
 		void	rotate_zyx(vec3f_t &sangle);
+		void	translate(vec3f_t &direction);
+
+		vec3f_t	getNormalised() const;
 
 	private:
 		vec3f_t		dirVector;

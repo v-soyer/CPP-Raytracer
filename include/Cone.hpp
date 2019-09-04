@@ -19,6 +19,7 @@ class Cone: public AShape {
 		void	displayInfo() override;
 
 		double	intersect(vec3f_t const &eyePos, vec3f_t const &dirVector) const override;
+		vec3f_t getNormal(vec3f_t const &intersectPoint, vec3f_t) const override;
 
 		void	setSemiangle(const double semiangle);
 		double	getSemiangle();

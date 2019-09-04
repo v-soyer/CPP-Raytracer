@@ -58,20 +58,32 @@ void	Eye::translate(vec3f_t &direction)
 
 void	Eye::rotate_x(float angle)
 {
-	this->rotation.y = (this->rotation.y * cos(RAD(angle))) - (this->rotation.z * sin(RAD(angle)));
-	this->rotation.z = (this->rotation.y * sin(RAD(angle))) + (this->rotation.z * cos(RAD(angle)));
+	vec3f_t tmp;
+
+	tmp.x = this->rotation.x;
+	tmp.y = (this->rotation.y * cos(RAD(angle))) - (this->rotation.z * sin(RAD(angle)));
+	tmp.z = (this->rotation.y * sin(RAD(angle))) + (this->rotation.z * cos(RAD(angle)));
+	this->rotation = tmp;
 }
 
 void	Eye::rotate_y(float angle)
 {
-	this->rotation.x = (this->rotation.x * cos(RAD(angle))) + (this->rotation.z * sin(RAD(angle)));
-	this->rotation.z = -(this->rotation.x * sin(RAD(angle))) + (this->rotation.z * cos(RAD(angle)));
+	vec3f_t tmp;
+
+	tmp.x = (this->rotation.x * cos(RAD(angle))) + (this->rotation.z * sin(RAD(angle)));
+	tmp.y = this->rotation.y;
+	tmp.z = -(this->rotation.x * sin(RAD(angle))) + (this->rotation.z * cos(RAD(angle)));
+	this->rotation = tmp;
 }
 
 void	Eye::rotate_z(float angle)
 {
-	this->rotation.x = (this->rotation.x * cos(RAD(angle))) - (this->rotation.y * sin(RAD(angle)));
-	this->rotation.y = (this->rotation.x * sin(RAD(angle))) + (this->rotation.y * cos(RAD(angle)));
+	vec3f_t tmp;
+
+	tmp.x = (this->rotation.x * cos(RAD(angle))) - (this->rotation.y * sin(RAD(angle)));
+	tmp.y = (this->rotation.x * sin(RAD(angle))) + (this->rotation.y * cos(RAD(angle)));
+	tmp.z = this->rotation.z;
+	this->rotation = tmp;
 }
 
 void	Eye::rotate_xyz(vec3f_t &angle)

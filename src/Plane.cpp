@@ -30,6 +30,17 @@ double	Plane::intersect(vec3f_t const &eyePos, vec3f_t const &dirVector) const
         return (k);
 }
 
+vec3f_t	Plane::getNormal(vec3f_t const &, vec3f_t eyePos) const
+{
+	int upward = eyePos.z < this->getPosition().z;
+
+	if (upward) {
+		return (vec3f_t(0,0,100));
+	} else {
+		return (vec3f_t(0,0,-100));
+	}
+}
+
 void	Plane::displayInfo()
 {
 	vec3f_t pos = this->getPosition();

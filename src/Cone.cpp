@@ -44,6 +44,12 @@ double	Cone::intersect(vec3f_t const &eyePos, vec3f_t const &dirVector) const
 	return (delta.calcDelta(coeff));
 }
 
+vec3f_t	Cone::getNormal(vec3f_t const &intersectPoint, vec3f_t) const
+{
+	double semiangle = this->semiangle * M_PI / 180;
+	return (vec3f_t(intersectPoint.x, intersectPoint.y, (intersectPoint.z * - tan(semiangle))));
+}
+
 void	Cone::displayInfo()
 {
 	vec3f_t pos = this->getPosition();

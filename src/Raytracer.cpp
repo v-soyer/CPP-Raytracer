@@ -24,17 +24,23 @@ vec3f_t	Raytracer::calcDirVector(double dist, int screenWidth, int screenHeight,
 
 Color::color	Raytracer::launchRay(DirectorVector &dirVector)
 {
+	Color::color	newColor;
 	std::vector<std::unique_ptr<AShape>>	&objs = myScene.getObjects();
+	std::vector<std::unique_ptr<Light>>		&lights = myScene.getLights();
 	vec3f_t	objPos;
 	vec3f_t objRot;
 	vec3f_t	objPosRev;
 	vec3f_t objRotRev;
-	int		size = objs.size();
+	vec3f_t interPoint;
+	vec3f_t	lightPos;
+	vec3f_t eyePos = myEye.getPosition();
+	int		objSize = objs.size();
+	int		lightSize = lights.size();
 	int		indexSaved = -1;
 	double	k = -1;
 	double	savedK = -1;
 
-	for (int i = 0; i < size; i++)
+	for (int i = 0; i < objSize; i++)
 	{
 		objPos = objs[i]->getPosition();
 		objRot = objs[i]->getRotation();
@@ -48,14 +54,24 @@ Color::color	Raytracer::launchRay(DirectorVector &dirVector)
 			if (savedK < 0 || savedK > k) {
 				savedK = k;
 				indexSaved = i;
+				interPoint.x = eyePos.x + (savedK * dirVector.getDirVector().x);
+				interPoint.y = eyePos.y + (savedK * dirVector.getDirVector().y);
+				interPoint.z = eyePos.z + (savedK * dirVector.getDirVector().z);
 			}
-		dirVector.rotate_xyz(objRot);
-		myEye.rotate_xyz(objRot);
+		dirVector.rotate_zyx(objRot);
+		myEye.rotate_zyx(objRot);
 		myEye.translate(objPos);
 	}
 	if (indexSaved == -1)
 		return (Color::Black);
-	return (objs[indexSaved]->getColor());
+	newColor = objs[indexSaved]->getColor();
+	for (int i = 0; i < lightSize; i++) {
+		lightPos.x = lights[i]->getPosition().x;
+		lightPos.y = lights[i]->getPosition().y;
+		lightPos.z = lights[i]->getPosition().z;
+		newColor = objs[indexSaved]->applyLight(myEye, lightPos, interPoint, newColor);
+	}
+	return (newColor);
 }
 
 std::vector<Color::color>	Raytracer::raytraceScene()
